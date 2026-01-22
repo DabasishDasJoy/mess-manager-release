@@ -1,0 +1,8 @@
+# Set correct MIME type for APK files
+AddType application/vnd.android.package-archive .apk
+
+# Force download for APK files
+<FilesMatch "\.apk$">
+    Header set Content-Type "application/vnd.android.package-archive"
+    Header set Content-Disposition "attachment; filename=\"mess-manager.apk\""
+</FilesMatch>

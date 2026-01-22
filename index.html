@@ -132,6 +132,22 @@
             font-size: 14px;
         }
     </style>
+    <script>
+        function handleDownload(event, url) {
+            // For mobile browsers, ensure proper download behavior
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'mess-manager.apk';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Prevent default behavior
+            event.preventDefault();
+            return false;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -153,7 +169,7 @@
                 • Performance optimizations<br>
                 • UI enhancements
             </div>
-            <a href="apk/v1.0.2/mess-manager.apk" class="download-btn" download>
+            <a href="apk/v1.0.2/mess-manager.apk" class="download-btn" download="mess-manager.apk" onclick="handleDownload(event, this.href)">
                 Download APK
             </a>
         </div>
